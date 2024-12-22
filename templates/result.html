@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diagnosis Result</title>
+    <style>
+      :root {
+        --primary-color: #0ea5e9;
+        --primary-hover: #0284c7;
+        --background: #f0f9ff;
+        --card-background: #ffffff;
+        --text-primary: #0f172a;
+        --text-secondary: #64748b;
+        --error: #ef4444;
+        --success: #10b981;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+        background: var(--background);
+        background-image: radial-gradient(
+            circle at 100% 100%,
+            rgba(14, 165, 233, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 0% 0%,
+            rgba(14, 165, 233, 0.15) 0%,
+            transparent 50%
+          );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 600px;
+        background: var(--card-background);
+        padding: 2.5rem;
+        border-radius: 1.5rem;
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 8px 10px -6px rgb(0 0 0 / 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+
+      h2 {
+        font-size: 2rem;
+        color: var(--text-primary);
+        text-align: center;
+        margin-bottom: 2rem;
+        font-weight: 700;
+        background: linear-gradient(to right, #0ea5e9, #0284c7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .result-section {
+        margin-bottom: 1.5rem;
+        padding: 1.5rem;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 0.75rem;
+        background-color: #f8fafc;
+      }
+
+      .result-section h3 {
+        color: var(--text-primary);
+        margin-bottom: 0.75rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .result-section p {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .button {
+        flex: 1;
+        display: inline-block;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #ffffff;
+        background: linear-gradient(to right, #0ea5e9, #0284c7);
+        border: none;
+        border-radius: 0.75rem;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.2),
+          0 2px 4px -2px rgba(14, 165, 233, 0.2);
+      }
+
+      .button:active {
+        transform: translateY(0);
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          padding: 1.75rem;
+        }
+
+        h2 {
+          font-size: 1.75rem;
+        }
+
+        .buttons {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Diagnosis Results</h2>
+
+      <div class="result-section">
+        <h3>Potential Disease</h3>
+        <p>{{ disease }}</p>
+      </div>
+
+      <div class="result-section">
+        <h3>Recommended Medicine</h3>
+        <p>{{ medicine }}</p>
+      </div>
+
+      <div class="result-section">
+        <h3>Usage Directions</h3>
+        <p>{{ directions }}</p>
+      </div>
+
+      <div class="buttons">
+        <a href="{{ url_for('home') }}" class="button">New Analysis</a>
+        <a href="{{ url_for('feedback') }}" class="button">Give Feedback</a>
+      </div>
+    </div>
+  </body>
+</html>
